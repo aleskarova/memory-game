@@ -43,6 +43,9 @@ export default [
       'html/indent': ['error', 2],
       'html/no-duplicate-attrs': 'error',
       'html/require-img-alt': 'warn',
+      'html/require-closing-tags': ['error', { selfClosing: 'always' }],
+      'html/no-extra-spacing-tags': 'off',
+      'html/attrs-newline': 'off',
     },
   },
   {
