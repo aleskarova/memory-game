@@ -5,7 +5,7 @@ import { handleCardClick, startNewGame } from './game.js';
 import { el } from './utils/dom.js';
 
 const header = createHeader({
-  onNewGame: () => console.log('Новая игра'),
+  onNewGame: startNewGame,
   onLeaderboard: () => console.log('Таблица лидеров'),
 });
 

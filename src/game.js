@@ -33,6 +33,8 @@ export function createDeck() {
 }
 
 export function startNewGame() {
+  clearTimeout(state.mismatchTimer);
+
   state.deck = createDeck();
   state.openedCards = [];
   state.matchedIds = new Set();
