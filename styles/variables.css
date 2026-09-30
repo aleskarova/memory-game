@@ -1,0 +1,19 @@
+:root {
+  --bg-abyss: #010512;
+  --bg-deep: #031226;
+  --accent-lumen: #3ef2e0;
+  --accent-lure: #ffc857;
+  --accent-coral: #ff5a6e;
+  --accent-violet: #b38cff;
+  --surface-card: #0a1e3a;
+  --surface-glass: #0e2748;
+  --text-primary: #eaf6ff;
+  --text-secondary: #8fa8c8;
+  --text-muted: #56708f;
+  --stroke-subtle: #1c3a63;
+
+  --font-display: 'Unbounded', sans-serif;
+  --font-body: 'Manrope', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --radius-card: 20px;
+}

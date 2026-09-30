@@ -1,0 +1,54 @@
+.stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 18px 20px;
+  border: 1px solid rgb(143 216 255 / 0.14);
+  border-radius: 20px;
+  background: rgb(14 39 72 /0.55);
+}
+
+.stat__label {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.stat__value {
+  font-family: var(--font-display);
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.stat__total {
+  /* font-size: 24px; */
+  color: var(--text-muted);
+}
+
+.progress {
+  display: flex;
+  gap: 4px;
+  padding-top: 6px;
+}
+
+.progress__segment {
+  flex: 1;
+  height: 6px;
+  border-radius: 3px;
+  background: rgb(255 255 255 / 0.1);
+}
+
+.progress__segment.is-filled {
+  background: var(--accent-lumen);
+  box-shadow: 0 0 8px rgb(62 242 224 /0.6);
+}
