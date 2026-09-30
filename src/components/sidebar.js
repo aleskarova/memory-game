@@ -1,4 +1,5 @@
 import { el } from '../utils/dom.js';
+import { createStats } from './stats.js';
 
 function createIntro() {
   const title = el('h1', { className: 'intro__title' }, [
@@ -18,5 +19,5 @@ function createIntro() {
 }
 
 export function createSidebar() {
-  return el('aside', { className: 'sidebar' }, [createIntro()]);
+  return el('aside', { className: 'sidebar' }, [createIntro(), createStats()]);
 }

@@ -1,7 +1,7 @@
-import { createBoard, renderBoard } from './components/board.js';
+import { createBoard } from './components/board.js';
 import { createHeader } from './components/header.js';
 import { createSidebar } from './components/sidebar.js';
-import { createDeck } from './game.js';
+import { startNewGame } from './game.js';
 import { el } from './utils/dom.js';
 
 const header = createHeader({
@@ -16,4 +16,4 @@ const app = el('div', { className: 'app' }, [header, main]);
 
 document.body.append(app);
 
-renderBoard(createDeck());
+startNewGame();
