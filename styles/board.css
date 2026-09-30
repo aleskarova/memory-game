@@ -75,7 +75,7 @@
 
 .card__name {
   font-size: 13px;
-  font-weight: 600px;
+  font-weight: 600;
   color: var(--text-secondary);
 }
 
@@ -111,4 +111,28 @@
 .card.is-matched .card__front::after {
   background-color: #03222a;
   mask: url('../assets/icons/check.svg') center / 16px no-repeat;
+}
+
+.card.is-mismatch {
+  box-shadow: 0 0 28px rgb(255 90 110 / 0.45);
+  animation: shake 0.25s;
+}
+
+.card.is-mismatch .card__front {
+  border: 2px solid var(--accent-coral);
+  background: radial-gradient(circle, #4a1a33, #1a1430);
+}
+
+.card.is-mismatch .card__name {
+  color: var(--accent-coral);
+}
+
+@keyframes shake {
+  25% {
+    transform: translateX(-4px);
+  }
+
+  75% {
+    transform: translateX(4px);
+  }
 }

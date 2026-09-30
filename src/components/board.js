@@ -1,5 +1,5 @@
 import { el } from '../utils/dom.js';
-import { createCard } from './card.js';
+import { CLOSED_CARD_LABEL, createCard } from './card.js';
 
 let boardElement = null;
 
@@ -40,5 +40,19 @@ export function markMatched(cards) {
     cardElement.classList.add('is-matched');
     cardElement.setAttribute('aria-label', `${card.name}, пара найдена`);
     cardElement.setAttribute('aria-disabled', true);
+  });
+}
+
+export function hideCards(cards) {
+  cards.forEach((card) => {
+    const cardElement = getCardElement(card);
+    cardElement.classList.remove('is-open', 'is-mismatch');
+    cardElement.setAttribute('aria-label', CLOSED_CARD_LABEL);
+  });
+}
+
+export function markMismatch(cards) {
+  cards.forEach((card) => {
+    getCardElement(card).classList.add('is-mismatch');
   });
 }

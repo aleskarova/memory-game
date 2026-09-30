@@ -1,3 +1,4 @@
+import globals from 'globals';
 import js from '@eslint/js';
 import css from '@eslint/css';
 import html from '@html-eslint/eslint-plugin';
@@ -11,13 +12,7 @@ export default [
     languageOptions: {
       ecmaVersion: 'latest',
       sourceType: 'module',
-      globals: {
-        window: 'readonly',
-        document: 'readonly',
-        navigator: 'readonly',
-        fetch: 'readonly',
-        console: 'readonly',
-      },
+      globals: globals.browser,
     },
     rules: {
       ...js.configs.recommended.rules,

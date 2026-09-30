@@ -1,7 +1,15 @@
-import { markMatched, renderBoard, showCard } from './components/board.js';
+import {
+  hideCards,
+  markMatched,
+  markMismatch,
+  renderBoard,
+  showCard,
+} from './components/board.js';
 import { updateStats } from './components/stats.js';
 import { CREATURES } from './data/creatures.js';
 import { shuffle } from './utils/shuffle.js';
+
+const MISMATCH_DELAY = 1000;
 
 const state = {
   deck: [],
@@ -37,6 +45,18 @@ export function startNewGame() {
   updateStats(state.moves, state.matchedIds.size);
 }
 
+function handleMismatch(first, second) {
+  state.isLocked = true;
+  markMismatch([first, second]);
+
+  state.mismatchTimer = setTimeout(() => {
+    hideCards([first, second]);
+    state.openedCards = [];
+    state.isLocked = false;
+    state.mismatchTimer = null;
+  }, MISMATCH_DELAY);
+}
+
 export function handleCardClick(uid) {
   if (state.isLocked || state.isFinished) {
     return;
@@ -62,7 +82,10 @@ export function handleCardClick(uid) {
 
   if (first.pairId === second.pairId) {
     state.matchedIds.add(first.pairId);
+    state.openedCards = [];
     markMatched([first, second]);
+  } else {
+    handleMismatch(first, second);
   }
 
   state.openedCards = [];
