@@ -78,3 +78,37 @@
   font-weight: 600px;
   color: var(--text-secondary);
 }
+
+.card.is-matched .card__front {
+  border: 2px solid var(--accent-lumen);
+  background: radial-gradient(circle, #0f4a5e, var(--surface-card));
+}
+
+.card.is-matched {
+  cursor: default;
+  box-shadow: 0 0 28px rgb(62 242 224 / 0.45);
+}
+
+.card.is-matched .card__name {
+  color: var(--accent-lumen);
+}
+
+.card.is-matched .card__front::before,
+.card.is-matched .card__front::after {
+  content: '';
+  position: absolute;
+  top: 10px;
+  right: 24px;
+  width: 24px;
+  height: 24px;
+}
+
+.card.is-matched .card__front::before {
+  border-radius: 50%;
+  background: var(--accent-lumen);
+}
+
+.card.is-matched .card__front::after {
+  background-color: #03222a;
+  mask: url('../assets/icons/check.svg') center / 16px no-repeat;
+}
