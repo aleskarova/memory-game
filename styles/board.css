@@ -1,0 +1,80 @@
+.board {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+.card {
+  position: relative;
+  aspect-ratio: 160 / 196;
+  padding: 0;
+  border: none;
+  border-radius: var(--radius-card);
+  color: inherit;
+  background: none;
+  cursor: pointer;
+  perspective: 1000px;
+  transition: transform 0.2s;
+}
+
+.card__inner {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.card.is-open .card__inner {
+  transform: rotateY(180deg);
+}
+
+.card__back,
+.card__front {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: var(--radius-card);
+  backface-visibility: hidden;
+}
+
+.card__back {
+  border: 1px solid rgb(62 242 224 / 0.18);
+  background:
+    radial-gradient(
+      circle,
+      #dffffb 0 4px,
+      rgb(62 242 224 / 0.45) 5px,
+      transparent 28px
+    ),
+    radial-gradient(circle, transparent 30%, #0b2142 72%),
+    repeating-radial-gradient(
+      circle,
+      transparent 0 17px,
+      rgb(62 242 224 / 0.28) 17px 18.5px
+    ),
+    #0b2142;
+  box-shadow: 0 12px 24px rgb(0 0 0 / 0.45);
+}
+
+.card__front {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 12px;
+  border: 1px solid rgb(91 139 208 / 0.55);
+  background: radial-gradient(circle, #17406f, var(--radius-card));
+  transform: rotateY(180deg);
+}
+
+.card__image {
+  width: 70%;
+  aspect-ratio: 1;
+}
+
+.card__name {
+  font-size: 13px;
+  font-weight: 600px;
+  color: var(--text-secondary);
+}
