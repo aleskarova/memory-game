@@ -1,19 +1,23 @@
 export function createElement(tag, options = {}, children = []) {
   const element = document.createElement(tag);
 
-  if (options.className) {
-    element.className = options.className;
+  const { className, text, attrs = {}, on = {} } = options;
+
+  if (className) {
+    element.className = className;
   }
 
-  if (options.text !== undefined) {
-    element.textContent = options.text;
+  if (text !== undefined) {
+    element.textContent = text;
   }
 
-  if (options.attrs) {
-    for (const [name, value] of Object.entries(options.attrs)) {
-      element.setAttribute(name, value);
-    }
-  }
+  Object.entries(attrs).forEach(([name, value]) =>
+    element.setAttribute(name, value),
+  );
+
+  Object.entries(on).forEach(([event, handler]) =>
+    element.addEventListener(event, handler),
+  );
 
   element.append(...children);
   return element;
