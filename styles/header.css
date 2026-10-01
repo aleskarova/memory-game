@@ -1,0 +1,91 @@
+.header {
+  display: flex;
+  flex-shrink: 0;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  height: 96px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+}
+
+.logo img {
+  width: 44px;
+  height: 44px;
+}
+
+.logo span {
+  font-family: var(--font-display);
+  font-size: 32px;
+  line-height: 1;
+  color: var(--cream);
+}
+
+.header__actions {
+  display: flex;
+  gap: 12px;
+}
+
+/* Tablet */
+@media (max-width: 1023px) {
+  .header {
+    height: 88px;
+  }
+
+  .logo {
+    gap: 10px;
+  }
+
+  .logo img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .logo span {
+    font-size: 28px;
+  }
+}
+
+/* Mobile: header buttons become round icon buttons */
+@media (max-width: 599px) {
+  .header {
+    height: 64px;
+  }
+
+  .logo {
+    gap: 8px;
+  }
+
+  .logo img {
+    width: 32px;
+    height: 32px;
+  }
+
+  .logo span {
+    font-size: 22px;
+  }
+
+  .header__actions {
+    gap: 8px;
+  }
+
+  .header .button {
+    width: 44px;
+    height: 44px;
+    padding: 0;
+  }
+
+  .header .button img {
+    width: 22px;
+    height: 22px;
+  }
+
+  /* The text is hidden, but aria-label still names the button */
+  .header .button__text {
+    display: none;
+  }
+}

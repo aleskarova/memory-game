@@ -1,6 +1,14 @@
 import { createElement } from './dom.js';
+import { createHeader } from './header.js';
 
-const h1 = createElement('h1', { text: 'HEADER' });
-console.log(h1);
+const header = createHeader({
+  onNewGame: () => console.log('New game!'),
+  onLeaderboard: () => console.log('Leaderboard!'),
+});
 
-document.body.appendChild(h1);
+const main = createElement('main', { className: 'main' });
+
+const app = createElement('div', { className: 'app' }, [header, main]);
+
+console.log(app);
+document.body.append(app);
