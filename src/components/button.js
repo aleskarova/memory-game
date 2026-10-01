@@ -1,4 +1,4 @@
-import { createElement } from './dom.js';
+import { createElement } from '../utils/dom.js';
 
 export function createButton({ label, image, variant = 'secondary', onClick }) {
   const children = [];

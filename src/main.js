@@ -1,5 +1,5 @@
-import { createElement } from './dom.js';
-import { createHeader } from './header.js';
+import { createHeader } from './components/header.js';
+import { createElement } from './utils/dom.js';
 
 const header = createHeader({
   onNewGame: () => console.log('New game!'),
