@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="Nebula, cat astronaut">
+  <title>Nebula</title>
+  <circle cx="60" cy="62" r="52" fill="#FF9F6B"/>
+  <circle cx="22" cy="30" r="2" fill="#FFF1DC"/><circle cx="104" cy="70" r="1.6" fill="#FFF1DC"/><circle cx="20" cy="88" r="1.4" fill="#FFF1DC"/>
+  <g transform="translate(93 25)">
+      <path d="M-13 0 C-6 -9 6 -9 9 0 C6 9 -6 9 -13 0 Z" fill="#FF7A8A" stroke="#1B1F3B" stroke-width="2.5" stroke-linejoin="round"/>
+      <path d="M9 0 L16 -6 L16 6 Z" fill="#FF7A8A" stroke="#1B1F3B" stroke-width="2.5" stroke-linejoin="round"/>
+      <circle cx="-6" cy="-1.5" r="1.8" fill="#1B1F3B"/></g>
+  <rect x="34" y="90" width="52" height="16" rx="8" fill="#FFF1DC" stroke="#1B1F3B" stroke-width="3"/>
+  <circle cx="60" cy="62" r="34" fill="#E9F6FF" stroke="#1B1F3B" stroke-width="3"/>
+  <path d="M38 64 L40 38 L54 50 Z" fill="#B07A4F" stroke="#1B1F3B" stroke-width="2.5" stroke-linejoin="round"/>
+  <path d="M82 64 L80 38 L66 50 Z" fill="#B07A4F" stroke="#1B1F3B" stroke-width="2.5" stroke-linejoin="round"/>
+  <path d="M42 54 L43 44 L49 50 Z" fill="#FFC2A8"/><path d="M78 54 L77 44 L71 50 Z" fill="#FFC2A8"/>
+  <ellipse cx="60" cy="66" rx="24" ry="20" fill="#B07A4F" stroke="#1B1F3B" stroke-width="2.5"/>
+  <path d="M41 62 H47 M41 68 H47 M73 62 H79 M73 68 H79 M55 47 L57 54 M65 47 L63 54" stroke="#7A4E2C" stroke-width="3" stroke-linecap="round"/>
+  <ellipse cx="51" cy="63" rx="3.6" ry="4.2" fill="#1B1F3B"/><ellipse cx="69" cy="63" rx="3.6" ry="4.2" fill="#1B1F3B"/>
+  <circle cx="52.3" cy="61.8" r="1.2" fill="#fff"/><circle cx="70.3" cy="61.8" r="1.2" fill="#fff"/>
+  <path d="M57.5 70 H62.5 L60 73 Z" fill="#FF7A8A" stroke="#1B1F3B" stroke-width="1.5" stroke-linejoin="round"/>
+  <path d="M60 73 C60 76 56 77 55 75 M60 73 C60 76 64 77 65 75" fill="none" stroke="#1B1F3B" stroke-width="1.8" stroke-linecap="round"/>
+  <path d="M46 71 L34 69 M46 74 L35 76 M74 71 L86 69 M74 74 L85 76" stroke="#1B1F3B" stroke-width="1.5" stroke-linecap="round"/>
+  <path d="M40 46 A28 28 0 0 1 56 34" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" opacity=".9"/>
+</svg>
