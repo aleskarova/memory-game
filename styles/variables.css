@@ -1,0 +1,16 @@
+:root {
+  --space-ink: #15183a;
+  --space-orbit: #252a5e;
+  --space-patch: #323879;
+  --line: #3b4290;
+  --cream: #fff1dc;
+  --muted: #a9aed6;
+  --apricot: #ff9f6b;
+  --mint: #7fe0c3;
+  --mustard: #ffd25e;
+  --coral: #ff7a8a;
+  --shadow: #0b0d22;
+
+  --font-display: 'Righteous', sans-serif;
+  --font-body: 'Bricolage Grotesque', sans-serif;
+}

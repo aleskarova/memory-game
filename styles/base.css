@@ -1,0 +1,16 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body {
+  background-color: var(--space-ink);
+  color: var(--cream);
+  font-family: var(--font-body);
+  min-height: 100dvh;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+}
