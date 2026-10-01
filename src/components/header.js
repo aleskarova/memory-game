@@ -1,5 +1,5 @@
 import { createButton } from './button.js';
-import { createElement } from './dom.js';
+import { createElement } from '../utils/dom.js';
 
 function createLogo() {
   const image = createElement('img', {
