@@ -1,0 +1,136 @@
+.main {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 0; /* lets the board shrink instead of overflowing */
+}
+
+.game {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--game-gap);
+}
+
+/* Square side: the smallest of the max size, the free width and the free height */
+.board {
+  --board-size: min(
+    var(--board-max),
+    100vw - 2 * var(--page-padding),
+    100dvh - var(--header-height) - var(--stats-height) - var(--game-gap) -
+      var(--page-padding)
+  );
+
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-rows: repeat(4, minmax(0, 1fr));
+  gap: var(--board-gap);
+  width: var(--board-size);
+  height: var(--board-size);
+}
+
+.card {
+  position: relative;
+  min-width: 0;
+  min-height: 0;
+  padding: 0;
+  overflow: hidden;
+  border: var(--card-border) solid var(--line);
+  border-radius: var(--card-radius);
+  background-color: var(--space-orbit);
+  box-shadow: 0 var(--card-shadow) 0 var(--shadow);
+  transition:
+    transform 0.15s,
+    border-color 0.15s,
+    box-shadow 0.15s;
+}
+
+.card__back,
+.card__face {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+}
+
+.card__back {
+  width: 92%;
+  height: 92%;
+}
+
+.card__face {
+  display: none;
+  width: 84%;
+  height: 84%;
+}
+
+@media (hover: hover) {
+  .card:not(.card--open, .card--miss, .card--matched):hover {
+    transform: translateY(-4px);
+    border-color: var(--mustard);
+    box-shadow: 0 calc(var(--card-shadow) + 4px) 0 var(--shadow);
+  }
+}
+
+.card:focus-visible {
+  outline: 3px solid var(--mustard);
+  outline-offset: 3px;
+}
+
+.card--open,
+.card--miss,
+.card--matched {
+  border-width: var(--card-border-open);
+  background-color: var(--cream);
+  cursor: default;
+}
+
+.card--open {
+  border-color: var(--apricot);
+}
+
+.card--miss {
+  border-color: var(--coral);
+}
+
+.card--matched {
+  border-color: var(--mint);
+}
+
+.card--open .card__back,
+.card--miss .card__back,
+.card--matched .card__back {
+  display: none;
+}
+
+.card--open .card__face,
+.card--miss .card__face,
+.card--matched .card__face {
+  display: block;
+}
+
+.card--matched::after {
+  content: '';
+  position: absolute;
+  top: var(--card-badge-offset);
+  right: var(--card-badge-offset);
+  width: 17%;
+  min-width: 18px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--mint) url('../assets/icons/check.svg') center / 70%
+    no-repeat;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card {
+    transition: none;
+  }
+}
+
+@media (max-width: 599px) {
+  .main {
+    justify-content: flex-start;
+  }
+}
