@@ -1,4 +1,5 @@
 import { CARDS } from './data/cards.js';
+import { createElement } from './utils/dom.js';
 import { shuffle } from './utils/shuffle.js';
 
 export function createDeck() {
