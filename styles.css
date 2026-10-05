@@ -1,0 +1,5 @@
+@import url('./styles/variables.css');
+@import url('./styles/base.css');
+@import url('./styles/header.css');
+@import url('./styles/board.css');
+@import url('./styles/modal.css');
