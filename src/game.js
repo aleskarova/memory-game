@@ -5,6 +5,7 @@ import {
   renderBoard,
   showCard,
 } from './components/board.js';
+import { openWinModal } from './components/modal.js';
 import { updateStats } from './components/stats.js';
 import { CARDS } from './data/cards.js';
 import { shuffle } from './utils/shuffle.js';
@@ -40,6 +41,7 @@ export function startNewGame() {
   state.matchedIds = new Set();
   state.moves = 0;
   state.isLocked = false;
+  state.isFinished = false;
   state.mismatchTimer = null;
 
   renderBoard(state.deck);
@@ -91,4 +93,9 @@ export function handleCardClick(uid) {
 
   state.openedCards = [];
   updateStats(state.moves, state.matchedIds.size);
+
+  if (state.matchedIds.size === CARDS.length) {
+    state.isFinished = true;
+    openWinModal(startNewGame);
+  }
 }
