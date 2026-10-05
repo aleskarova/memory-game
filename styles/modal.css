@@ -156,6 +156,87 @@ body.no-scroll {
   color: var(--muted);
 }
 
+.leaderboard {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 4px;
+}
+
+.leaderboard th {
+  padding: 0 12px;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: left;
+  color: var(--muted);
+}
+
+.leaderboard td {
+  padding: 7px 12px;
+}
+
+.leaderboard tbody tr:nth-child(odd) td {
+  background-color: rgb(50 56 121 / 0.7);
+}
+
+.leaderboard td:first-child {
+  border-radius: 12px 0 0 12px;
+}
+
+.leaderboard td:last-child {
+  border-radius: 0 12px 12px 0;
+}
+
+.leaderboard__rank {
+  width: 56px;
+}
+
+.leaderboard__moves {
+  font-family: var(--font-display);
+  font-size: 20px;
+}
+
+.leaderboard__date {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.leaderboard th.leaderboard__date,
+.leaderboard td.leaderboard__date {
+  padding-right: 16px;
+  text-align: right;
+}
+
+.rank-badge {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  border: 1.5px solid var(--line);
+  border-radius: 50%;
+  font-family: var(--font-display);
+  font-size: 16px;
+}
+
+.leaderboard tbody tr:nth-child(-n + 3) .rank-badge {
+  color: var(--space-ink);
+}
+
+.leaderboard tbody tr:nth-child(1) .rank-badge {
+  border-color: var(--mustard);
+  background-color: var(--mustard);
+}
+
+.leaderboard tbody tr:nth-child(2) .rank-badge {
+  border-color: var(--cream);
+  background-color: var(--cream);
+}
+
+.leaderboard tbody tr:nth-child(3) .rank-badge {
+  border-color: var(--apricot);
+  background-color: var(--apricot);
+}
+
 @media (max-width: 599px) {
   .modal__box {
     gap: 20px;
@@ -206,5 +287,40 @@ body.no-scroll {
 
   .leaderboard-empty__title {
     font-size: 22px;
+  }
+
+  .leaderboard {
+    border-spacing: 0 2px;
+  }
+
+  .leaderboard th {
+    padding: 0 8px;
+  }
+
+  .leaderboard td {
+    padding: 5px 8px;
+  }
+
+  .leaderboard th.leaderboard__date,
+  .leaderboard td.leaderboard__date {
+    padding-right: 10px;
+  }
+
+  .leaderboard__rank {
+    width: 44px;
+  }
+
+  .leaderboard__moves {
+    font-size: 18px;
+  }
+
+  .leaderboard__date {
+    font-size: 14px;
+  }
+
+  .rank-badge {
+    width: 26px;
+    height: 26px;
+    font-size: 14px;
   }
 }

@@ -1,4 +1,5 @@
 import { createElement } from '../utils/dom.js';
+import { formatDate, loadResults } from '../utils/storage.js';
 import { createButton } from './button.js';
 
 function createModal({ content, actions, className = '' }) {
@@ -118,6 +119,38 @@ function createEmptyLeaderboard() {
   ]);
 }
 
+function createLeaderboardTable(results) {
+  const headRow = createElement('tr', {}, [
+    createElement('th', { className: 'leaderboard__rank', text: 'Rank' }, []),
+    createElement('th', { text: 'Moves' }, []),
+    createElement('th', { className: 'leaderboard__date', text: 'Date' }, []),
+  ]);
+
+  const resultRows = results.map(({ moves, date }, index) => {
+    return createElement('tr', {}, [
+      createElement('td', { className: 'leaderboard__rank' }, [
+        createElement('span', {
+          className: 'rank-badge',
+          text: `${index + 1}`,
+        }),
+      ]),
+      createElement('td', {
+        className: 'leaderboard__moves',
+        text: `${moves}`,
+      }),
+      createElement('td', {
+        className: 'leaderboard__date',
+        text: formatDate(date),
+      }),
+    ]);
+  });
+
+  return createElement('table', { className: 'leaderboard' }, [
+    createElement('thead', {}, [headRow]),
+    createElement('tbody', {}, resultRows),
+  ]);
+}
+
 function createLeaderboardModal(results = []) {
   let dialog;
   const title = createElement('h2', {
@@ -136,9 +169,10 @@ function createLeaderboardModal(results = []) {
     subtitle,
   ]);
 
-  const tableOrEmpty = results
-    ? createEmptyLeaderboard()
-    : createElement('div');
+  const tableOrEmpty =
+    results.length > 0
+      ? createLeaderboardTable(results)
+      : createEmptyLeaderboard();
 
   const closeButton = createButton({
     label: 'Close',
@@ -158,6 +192,7 @@ function createLeaderboardModal(results = []) {
 }
 
 export function openLeaderboard() {
-  const leaderboard = createLeaderboardModal();
+  const results = loadResults();
+  const leaderboard = createLeaderboardModal(results);
   openModal(leaderboard);
 }
