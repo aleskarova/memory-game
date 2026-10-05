@@ -1,12 +1,13 @@
 import { createBoard } from './components/board.js';
 import { createHeader } from './components/header.js';
+import { openLeaderboard } from './components/modal.js';
 import { createStats } from './components/stats.js';
 import { handleCardClick, startNewGame } from './game.js';
 import { createElement } from './utils/dom.js';
 
 const header = createHeader({
   onNewGame: startNewGame,
-  onLeaderboard: () => console.log('Leaderboard!'),
+  onLeaderboard: openLeaderboard,
 });
 
 const board = createBoard(handleCardClick);
