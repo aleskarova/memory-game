@@ -97,6 +97,6 @@ export function handleCardClick(uid) {
   if (state.matchedIds.size === CARDS.length) {
     state.isFinished = true;
     saveResult(state.moves);
-    openWinModal(startNewGame);
+    openWinModal(state.moves, startNewGame);
   }
 }

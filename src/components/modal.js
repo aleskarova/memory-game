@@ -31,7 +31,7 @@ function closeModal(modal) {
   modal.remove();
 }
 
-function createWinModal(onRestart) {
+function createWinModal(moves, onRestart) {
   let dialog;
 
   const images = [
@@ -58,7 +58,7 @@ function createWinModal(onRestart) {
   });
 
   const winResultText = [
-    createElement('span', { className: 'win__moves' }),
+    createElement('span', { className: 'win__moves', text: `${moves}` }),
     createElement('span', { text: ' moves' }),
   ];
   const winResult = createElement(
@@ -93,8 +93,8 @@ function createWinModal(onRestart) {
   return dialog;
 }
 
-export function openWinModal(onRestart) {
-  const winModal = createWinModal(onRestart);
+export function openWinModal(moves, onRestart) {
+  const winModal = createWinModal(moves, onRestart);
   openModal(winModal);
 }
 
