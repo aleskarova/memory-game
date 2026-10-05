@@ -1,0 +1,212 @@
+.main {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 0; /* lets the board shrink instead of overflowing */
+}
+
+.game {
+  /* Square board side: the smallest of the max size, the free width and the free height */
+  --board-size: min(
+    var(--board-max),
+    100vw - 2 * var(--page-padding),
+    100dvh - var(--header-height) - var(--stats-height) - var(--game-gap) -
+      var(--page-padding)
+  );
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--game-gap);
+}
+
+.stats {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: var(--board-size);
+  height: var(--stats-height);
+  padding: 0 24px;
+  border: 1.5px solid var(--line);
+  border-radius: 18px;
+  background-color: var(--space-orbit);
+}
+
+.stat {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.stat__label {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--muted);
+}
+
+.stat__value {
+  font-family: var(--font-display);
+  font-size: 28px;
+  line-height: 1;
+  color: var(--cream);
+}
+
+.progress {
+  align-self: center;
+  margin-left: 6px;
+}
+
+.dots {
+  display: flex;
+  gap: 5px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border: 1.5px solid rgb(169 174 214 / 0.6);
+  border-radius: 50%;
+}
+
+.dot.is-filled {
+  border-color: var(--mint);
+  background-color: var(--mint);
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-rows: repeat(4, minmax(0, 1fr));
+  gap: var(--board-gap);
+  width: var(--board-size);
+  height: var(--board-size);
+}
+
+.card {
+  position: relative;
+  min-width: 0;
+  min-height: 0;
+  padding: 0;
+  border: 0;
+  border-radius: var(--card-radius);
+  background: none;
+  transform: perspective(800px) rotateY(0);
+  transform-style: preserve-3d;
+  transition: transform 0.4s ease;
+}
+
+.card__back,
+.card__face {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--card-radius);
+  box-shadow: 0 var(--card-shadow) 0 var(--shadow);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transition:
+    border-color 0.15s,
+    box-shadow 0.15s;
+}
+
+.card__back {
+  padding: 4%;
+  border: var(--card-border) solid var(--line);
+  background-color: var(--space-orbit);
+}
+
+.card__face {
+  padding: 8%;
+  border: var(--card-border-open) solid var(--apricot);
+  background-color: var(--cream);
+  transform: rotateY(180deg);
+}
+
+@media (hover: hover) {
+  .card:not(.is-open, .is-matched):hover {
+    transform: perspective(800px) translateY(-4px);
+  }
+
+  .card:not(.is-open, .is-matched):hover .card__back {
+    border-color: var(--mustard);
+    box-shadow: 0 calc(var(--card-shadow) + 4px) 0 var(--shadow);
+  }
+}
+
+.card:focus-visible {
+  outline: 3px solid var(--mustard);
+  outline-offset: 3px;
+}
+
+.card.is-open,
+.card.is-matched {
+  transform: perspective(800px) rotateY(180deg);
+  cursor: default;
+}
+
+.card.is-mismatch .card__face {
+  border-color: var(--coral);
+}
+
+.card.is-matched .card__face {
+  border-color: var(--mint);
+}
+
+/* The card is turned 180°, so "left" here appears on the right */
+.card.is-matched::after {
+  content: '';
+  position: absolute;
+  top: var(--card-badge-offset);
+  left: var(--card-badge-offset);
+  width: 17%;
+  min-width: 18px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--mint) url('../assets/icons/check.svg') center / 70%
+    no-repeat;
+  transform: rotateY(180deg) translateZ(1px);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card,
+  .card__back,
+  .card__face {
+    transition: none;
+  }
+}
+
+@media (max-width: 599px) {
+  .stats {
+    padding: 0 14px;
+  }
+
+  .stat {
+    gap: 8px;
+  }
+
+  .stat__label {
+    font-size: 14px;
+  }
+
+  .stat__value {
+    font-size: 22px;
+  }
+
+  .progress {
+    margin-left: 2px;
+  }
+
+  .dots {
+    gap: 3px;
+  }
+
+  .dot {
+    width: 7px;
+    height: 7px;
+  }
+}

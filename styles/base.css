@@ -1,0 +1,166 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+/* Stars in two tiles of different sizes, so the pattern does not look repeated */
+html {
+  background-color: var(--space-ink);
+  background-image:
+    radial-gradient(
+      circle at 8% 12%,
+      rgb(255 241 220 / 0.8) 1px,
+      transparent 1.6px
+    ),
+    radial-gradient(
+      circle at 37% 64%,
+      rgb(255 241 220 / 0.4) 1px,
+      transparent 1.6px
+    ),
+    radial-gradient(
+      circle at 71% 23%,
+      rgb(255 241 220 / 0.6) 1.4px,
+      transparent 2px
+    ),
+    radial-gradient(
+      circle at 88% 79%,
+      rgb(255 241 220 / 0.3) 1px,
+      transparent 1.6px
+    ),
+    radial-gradient(
+      circle at 54% 91%,
+      rgb(255 210 94 / 0.7) 1.2px,
+      transparent 1.8px
+    );
+  background-size: 360px 360px;
+}
+
+body {
+  min-height: 100dvh;
+  background-image:
+    radial-gradient(
+      circle at 19% 41%,
+      rgb(255 241 220 / 0.5) 1.2px,
+      transparent 1.8px
+    ),
+    radial-gradient(
+      circle at 63% 8%,
+      rgb(255 241 220 / 0.3) 1px,
+      transparent 1.6px
+    ),
+    radial-gradient(
+      circle at 82% 52%,
+      rgb(255 210 94 / 0.5) 1px,
+      transparent 1.6px
+    ),
+    radial-gradient(
+      circle at 44% 83%,
+      rgb(255 241 220 / 0.7) 1px,
+      transparent 1.6px
+    );
+  background-size: 530px 530px;
+  color: var(--cream);
+  font-family: var(--font-body);
+}
+
+body::before,
+body::after {
+  content: '';
+  position: fixed;
+  z-index: -1;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+body::before {
+  left: -24.5vmax;
+  bottom: -47.6vmax;
+  width: 70vmax;
+  height: 70vmax;
+  background-color: var(--space-orbit);
+}
+
+body::after {
+  left: -42vmax;
+  bottom: -8.4vmax;
+  width: 105vmax;
+  height: 22.4vmax;
+  border: 6px solid var(--space-patch);
+  transform: rotate(8deg);
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+}
+
+img {
+  display: block;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100dvh;
+  padding: 0 var(--page-padding) var(--page-padding);
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 48px;
+  padding: 0 22px;
+  border: 2px solid transparent;
+  border-radius: 999px;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1;
+  white-space: nowrap;
+  transition:
+    background-color 0.15s,
+    box-shadow 0.15s,
+    transform 0.15s;
+}
+
+.button img {
+  width: 20px;
+  height: 20px;
+}
+
+.button:focus-visible {
+  outline: 3px solid var(--mustard);
+  outline-offset: 3px;
+}
+
+.button--primary {
+  background-color: var(--apricot);
+  color: var(--space-ink);
+  box-shadow: 0 4px 0 #b9603a;
+}
+
+.button--primary:hover {
+  background-color: var(--mustard);
+}
+
+.button--primary:active {
+  transform: translateY(4px);
+  box-shadow: 0 0 0 #b9603a;
+}
+
+.button--secondary {
+  background-color: transparent;
+  border-color: var(--cream);
+  color: var(--cream);
+}
+
+.button--secondary:hover {
+  background-color: rgb(255 241 220 / 0.12);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .button {
+    transition: none;
+  }
+}
