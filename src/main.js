@@ -1,6 +1,7 @@
-import { createBoard, renderBoard } from './components/board.js';
+import { createBoard } from './components/board.js';
 import { createHeader } from './components/header.js';
-import { createDeck } from './game.js';
+import { createStats } from './components/stats.js';
+import { startNewGame } from './game.js';
 import { createElement } from './utils/dom.js';
 
 const header = createHeader({
@@ -10,7 +11,10 @@ const header = createHeader({
 
 const board = createBoard((uid) => console.log(`Card ${uid} clicked`));
 
-const game = createElement('section', { className: 'game' }, [board]);
+const game = createElement('section', { className: 'game' }, [
+  createStats(),
+  board,
+]);
 
 const main = createElement('main', { className: 'main' }, [game]);
 
@@ -18,4 +22,4 @@ const app = createElement('div', { className: 'app' }, [header, main]);
 
 document.body.append(app);
 
-renderBoard(createDeck());
+startNewGame();
