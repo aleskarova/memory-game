@@ -25,3 +25,22 @@ export function renderBoard(deck) {
   const cards = deck.map((card) => createCard(card));
   boardElement.replaceChildren(...cards);
 }
+
+function getCardElement(card) {
+  return boardElement.querySelector(`[data-uid="${card.uid}"]`);
+}
+
+export function showCard(card) {
+  const cardElement = getCardElement(card);
+  cardElement.classList.add('is-open');
+  cardElement.setAttribute('aria-label', card.name);
+}
+
+export function markMatched(cards) {
+  cards.forEach((card) => {
+    const cardElement = getCardElement(card);
+    cardElement.classList.add('is-matched');
+    cardElement.setAttribute('aria-label', `${card.name}, found pair`);
+    cardElement.setAttribute('aria-disabled', true);
+  });
+}
