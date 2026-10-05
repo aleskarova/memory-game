@@ -5,7 +5,7 @@ import { handleCardClick, startNewGame } from './game.js';
 import { createElement } from './utils/dom.js';
 
 const header = createHeader({
-  onNewGame: () => console.log('New game!'),
+  onNewGame: startNewGame,
   onLeaderboard: () => console.log('Leaderboard!'),
 });
 
