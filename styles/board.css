@@ -89,38 +89,48 @@
   min-width: 0;
   min-height: 0;
   padding: 0;
-  overflow: hidden;
-  border: var(--card-border) solid var(--line);
+  border: 0;
   border-radius: var(--card-radius);
-  background-color: var(--space-orbit);
-  box-shadow: 0 var(--card-shadow) 0 var(--shadow);
-  transition:
-    transform 0.15s,
-    border-color 0.15s,
-    box-shadow 0.15s;
+  background: none;
+  transform: perspective(800px) rotateY(0);
+  transform-style: preserve-3d;
+  transition: transform 0.4s ease;
 }
 
 .card__back,
 .card__face {
   position: absolute;
   inset: 0;
-  margin: auto;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--card-radius);
+  box-shadow: 0 var(--card-shadow) 0 var(--shadow);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transition:
+    border-color 0.15s,
+    box-shadow 0.15s;
 }
 
 .card__back {
-  width: 92%;
-  height: 92%;
+  padding: 4%;
+  border: var(--card-border) solid var(--line);
+  background-color: var(--space-orbit);
 }
 
 .card__face {
-  display: none;
-  width: 84%;
-  height: 84%;
+  padding: 8%;
+  border: var(--card-border-open) solid var(--apricot);
+  background-color: var(--cream);
+  transform: rotateY(180deg);
 }
 
 @media (hover: hover) {
-  .card:not(.card--open, .card--miss, .card--matched):hover {
-    transform: translateY(-4px);
+  .card:not(.is-open, .is-matched):hover {
+    transform: perspective(800px) translateY(-4px);
+  }
+
+  .card:not(.is-open, .is-matched):hover .card__back {
     border-color: var(--mustard);
     box-shadow: 0 calc(var(--card-shadow) + 4px) 0 var(--shadow);
   }
@@ -131,53 +141,41 @@
   outline-offset: 3px;
 }
 
-.card--open,
-.card--miss,
-.card--matched {
-  border-width: var(--card-border-open);
-  background-color: var(--cream);
+.card.is-open,
+.card.is-matched {
+  transform: perspective(800px) rotateY(180deg);
   cursor: default;
 }
 
-.card--open {
-  border-color: var(--apricot);
-}
-
-.card--miss {
+.card.is-mismatch .card__face {
   border-color: var(--coral);
 }
 
-.card--matched {
+.card.is-matched .card__face {
   border-color: var(--mint);
 }
 
-.card--open .card__back,
-.card--miss .card__back,
-.card--matched .card__back {
-  display: none;
-}
-
-.card--open .card__face,
-.card--miss .card__face,
-.card--matched .card__face {
-  display: block;
-}
-
-.card--matched::after {
+/* The card is turned 180°, so "left" here appears on the right */
+.card.is-matched::after {
   content: '';
   position: absolute;
   top: var(--card-badge-offset);
-  right: var(--card-badge-offset);
+  left: var(--card-badge-offset);
   width: 17%;
   min-width: 18px;
   aspect-ratio: 1;
   border-radius: 50%;
   background: var(--mint) url('../assets/icons/check.svg') center / 70%
     no-repeat;
+  transform: rotateY(180deg) translateZ(1px);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .card {
+  .card,
+  .card__back,
+  .card__face {
     transition: none;
   }
 }

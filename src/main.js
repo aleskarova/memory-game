@@ -1,7 +1,7 @@
 import { createBoard } from './components/board.js';
 import { createHeader } from './components/header.js';
 import { createStats } from './components/stats.js';
-import { startNewGame } from './game.js';
+import { handleCardClick, startNewGame } from './game.js';
 import { createElement } from './utils/dom.js';
 
 const header = createHeader({
@@ -9,7 +9,7 @@ const header = createHeader({
   onLeaderboard: () => console.log('Leaderboard!'),
 });
 
-const board = createBoard((uid) => console.log(`Card ${uid} clicked`));
+const board = createBoard(handleCardClick);
 
 const game = createElement('section', { className: 'game' }, [
   createStats(),
