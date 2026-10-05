@@ -126,9 +126,10 @@ function createLeaderboardModal(results = []) {
   });
   const subtitle = createElement('p', {
     className: 'modal__text',
-    text: results
-      ? 'Top 10 games, fewest moves first.'
-      : 'Your 10 best games will appear here.',
+    text:
+      results.length > 0
+        ? 'Top 10 games, fewest moves first.'
+        : 'Your 10 best games will appear here.',
   });
   const heading = createElement('div', { className: 'modal__heading' }, [
     title,
