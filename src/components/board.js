@@ -48,7 +48,6 @@ export function markMatched(cards) {
 export function hideCards(cards) {
   cards.forEach((card) => {
     const cardElement = getCardElement(card);
-    console.log(cardElement);
     cardElement.classList.remove('is-open', 'is-mismatch');
     cardElement.setAttribute('aria-label', CLOSED_CARD_LABEL);
   });

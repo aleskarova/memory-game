@@ -12,7 +12,6 @@ export function loadResults() {
 
 export function saveResult(moves) {
   const results = loadResults();
-  console.log(`localStorage results: ${results}`);
   results.push({ moves, date: Date.now() });
   results.sort((a, b) => a.moves - b.moves || a.date - b.date);
 

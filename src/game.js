@@ -9,6 +9,7 @@ import { openWinModal } from './components/modal.js';
 import { updateStats } from './components/stats.js';
 import { CARDS } from './data/cards.js';
 import { shuffle } from './utils/shuffle.js';
+import { saveResult } from './utils/storage.js';
 
 const MISMATCH_DELAY = 1000;
 
@@ -87,7 +88,6 @@ export function handleCardClick(uid) {
     state.openedCards = [];
     markMatched([first, second]);
   } else {
-    console.log('mismatch!');
     handleMismatch(first, second);
   }
 
@@ -96,6 +96,7 @@ export function handleCardClick(uid) {
 
   if (state.matchedIds.size === CARDS.length) {
     state.isFinished = true;
+    saveResult(state.moves);
     openWinModal(startNewGame);
   }
 }
